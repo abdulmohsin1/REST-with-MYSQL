@@ -21,7 +21,7 @@ const connection = mysql.createConnection({
     password: 'karmaini1!'
 });
 
-
+/// home route in which just checkig things are working properly
 app.get("/", (req, res) => {
 
     let q = `SELECT COUNT(*) FROM user`;
@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 
 });
 
-
+// here adding all user from table or getting user
 app.get("/user", (req, res) => {
 
     let q = `SELECT * FROM user`;
@@ -56,6 +56,7 @@ app.get("/user", (req, res) => {
 
 });
 
+// here getting user form for editing
 app.get("/user/:id/edit", (req, res) => {
     let { id } = req.params;
     let q = `SELECT * FROM user WHERE id=${id}`;
@@ -72,6 +73,7 @@ app.get("/user/:id/edit", (req, res) => {
     ;
 });
 
+// heer we actually putting edit user into database
 app.patch("/user/:id", (req, res) => {
     let { id } = req.params;
     let { password: formPassword, name: newName } = req.body;
@@ -97,7 +99,7 @@ app.patch("/user/:id", (req, res) => {
     }
 });
 
-// adding user in data 
+// adding user in database and updating also to ejs file
 
 app.post("/user",(req, res)=>{
     let {id,name,email,password}=req.body;
